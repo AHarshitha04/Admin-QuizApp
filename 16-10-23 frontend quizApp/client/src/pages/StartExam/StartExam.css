@@ -11,13 +11,28 @@
 #close-icon{
     cursor: pointer;
 }
-#divContent {
+#divContent1 {
     
     position: absolute;
     top: 20%;
     left: 40%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 9999;   
+    color: #FFFF;
+    width: 450px;
+    height: 50vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+}
+#divContent2 {
+
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
     color: #FFFF;
     width: 450px;
     height: 50vh;

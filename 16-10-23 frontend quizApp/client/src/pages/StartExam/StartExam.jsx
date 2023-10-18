@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import Navbar from '../../components/Navbar/Navbar'
 import './StartExam.css'
 import { Link,NavLink } from 'react-router-dom'
+import PhoneInput from 'react-phone-number-input'
 // import LoginSignUpBox from '../../components/Login&SignUp/Login&SignUpBox';
 
-import { State, City } from 'country-state-city';
+
 
 
 
@@ -26,26 +27,61 @@ const StartExam = () => {
         setShowAlert(false);
     };
 
-    const [cityid, setCityid] = useState(0);
-    const [stateid, setStateid] = useState(0);
-    // useEffect(() => {
-    //     if (showAlert) {
-    //         // Display the alert after 2 seconds
-    //         const timeout = setTimeout(() => {
-    //             setShowAlert(false);
-    //         }, 2000);
+    const countries = [
+        { id: "1", name: "INDIA" },
+        { id: "2", name: "USA" }
+    ];
 
-    //         // Clear the timeout if the component unmounts or showAlert is set to false before the timeout
-    //         return () => clearTimeout(timeout);
-    //     }
-    // }, [showAlert]);
+    const states = [
+        { id: "1", countryId: "1", name: "Haryana" },
+        { id: "2", countryId: "1", name: "Delhi" },
+        { id: "3", countryId: "1", name: "Telangana" },
+        { id: "4", countryId: "1", name: "Andhra Pradesh" },
+        { id: "5", countryId: "2", name: "Texas" },
+        { id: "6", countryId: "2", name: "California" }
+    ]
+
+    const cities = [
+        { id: "1", stateId: "1", name: "Faridabad" },
+        { id: "2", stateId: "1", name: "Palwal" },
+        { id: "3", stateId: "2", name: "Mandi House" },
+        { id: "4", stateId: "2", name: "kalka Ji" },
+        { id: "5", stateId: "3", name: "Hyderabad" },
+        { id: "6", stateId: "3", name: "Gachibowli" },
+        { id: "1", stateId: "5", name: "Houston" },
+        { id: "2", stateId: "5", name: "Austin" },
+        { id: "3", stateId: "6", name: "Los Angeles" },
+        { id: "4", stateId: "6", name: "Son Diego" },
+        { id: "5", stateId: "4", name: "Vijyawada" },
+        { id: "6", stateId: "4", name: "Thirupati" }
+    ]
+
+    const [country, setCountry] = useState([]);
+    const [state, setState] = useState([]);
+    const [city, setCity] = useState([]);
+
+    useEffect(() => {
+        setCountry(countries);
+    }, [])
+
+    const handleCountry = (id) => {
+        const dt = states.filter(x => x.countryId === id);
+        setState(dt);
+    }
+
+    const handleState = (id) => {
+        const dt = cities.filter(x => x.stateId === id);
+        setCity(dt);
+    }
+ 
+    const [value, setValue] = useState()
 
 
     return (
         <div className='main_conatiner'>
             <div><Navbar /></div>
             {showAlert && (
-                <div id='divContent'>
+                <div id='divContent1'>
                     {/* <LoginSignUpBox/> */}
                     <div>
                         <div className='login_close_container'><h4>LOGIN</h4><p><span id='close-icon' class="material-symbols-outlined" onClick={closeAlert}>
@@ -70,7 +106,7 @@ const StartExam = () => {
                   
                 </div>
             )}
-            <div id='divContent'>
+            <div id='divContent2'>
                 {/* <LoginSignUpBox/> */}
                 <div>
                     <div className='login_close_container'><h4>SIGNUP</h4><p><span id='close-icon' class="material-symbols-outlined" onClick={closeAlert}>
@@ -86,37 +122,60 @@ const StartExam = () => {
                             <input type="text" placeholder="Enter your Email Address" />
                         </p>
                         <p>
-
+                            <PhoneInput
+                                placeholder="Enter phone number"
+                                value={value}
+                                onChange={setValue} />
                         </p>
-                        <h6>State</h6>
-                        <StateSelect
-                            countryid={countryid}
-                            onChange={(e) => {
-                                setStateid(e.id);
-                            }}
-                            placeHolder="Select State"
-                        />
-                        <h6>City</h6>
-                        <CitySelect
-                            countryid={countryid}
-                            stateid={stateid}
-                            onChange={(e) => {
-                                console.log(e);
-                            }}
-                            placeHolder="Select City"
-                        />
-                        <p>
+                        <p><select id="ddlCountry" className='form-control select-class' onChange={(e) => handleCountry(e.target.value)}>
+                            <option value="0">Select Country</option>
+                            {
+                                country &&
+                                    country !== undefined ?
+                                    country.map((ctr, index) => {
+                                        return (
+                                            <option key={index} value={ctr.id}>{ctr.name}</option>
+                                        )
+                                    })
+                                    : "No Country"
 
+                            }
+                        </select>
                         </p>
-                        <p>
+                        <br></br>
+                        <p><select id="ddlStates" className='form-control select-class' onChange={(e) => handleState(e.target.value)}>
+                            <option value="0">Select State</option>
+                            {
+                                state &&
+                                    state !== undefined ?
+                                    state.map((ctr, index) => {
+                                        return (
+                                            <option key={index} value={ctr.id}>{ctr.name}</option>
+                                        )
+                                    })
+                                    : "No State"
 
+                            }
+                        </select>
                         </p>
-                        <p>
+                        <br></br>
+                        <p><select id="ddlCity" className='form-control select-class'>
+                            <option value="0">Select City</option>
+                            {
+                                city &&
+                                    city !== undefined ?
+                                    city.map((ctr, index) => {
+                                        return (
+                                            <option key={index} value={ctr.id}>{ctr.name}</option>
+                                        )
+                                    })
+                                    : "No City"
 
+                            }
+                        </select>
                         </p>
-                        <p>
-
-                        </p>
+                       
+                       
                     </form>
                     <div>
                         <button>Submit</button>
