@@ -3,6 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.close{
+    display: none;
+}
+
  /* -------------- left bar ------------------- */
  .leftsidebar-contents{
     padding: 20px;
@@ -20,3 +25,4 @@
    color: #000000d2;
    font-weight: 500;
 }
+
