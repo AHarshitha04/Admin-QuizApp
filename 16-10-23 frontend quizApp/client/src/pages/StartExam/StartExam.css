@@ -4,6 +4,29 @@
     box-sizing: border-box;
 }
 
+/* ------------------------------------------- nav bar start--------------------------------------------------------------------  */
+#close-icon {
+    cursor: pointer;
+}
+
+.navbar-div{
+    padding: 10px;
+    display:flex ;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    border-bottom: 1px solid rgb(184, 181, 181);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* box-shadow: 2px gray; */
+}
+.auth-btn{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+/* ------------------------------------------- nav bar end --------------------------------------------------------------------  */
+
 .main_conatiner {
     position: relative;
 }
