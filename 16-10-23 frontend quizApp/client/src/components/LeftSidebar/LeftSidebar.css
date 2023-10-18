@@ -7,4 +7,16 @@
  .leftsidebar-contents{
     padding: 20px;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.leftsidebar-contents li{
+    display: flex;
+    align-items: center;gap: 0.5rem;
+}
+.leftsidebar-contents li a{
+   color: #000000d2;
+   font-weight: 500;
 }
