@@ -1,0 +1,81 @@
+#divContent {
+
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    color: #FFFF;
+    width: 450px;
+    height: 50vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+}
+
+#divContent>div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+
+}
+
+#divContent #form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+
+
+}
+
+#divContent #form h5 {
+    margin: 0.1rem;
+    text-align: left;
+
+}
+
+#divContent #form p {
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#divContent #form input {
+    border-radius: 18px;
+    padding: 0.5rem;
+    width: 100%;
+    height: 30px;
+    border: none;
+
+}
+
+#divContent #form input:focus {
+    outline: none;
+
+}
+
+#divContent a {
+    color: #FFFF;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+        color: rgb(38, 0, 255);
+    }
+}
+
+.login_close_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.login_close_container p {
+    position: absolute;
+    right: 3%;
+    top: 5%;
+
+}
