@@ -4,47 +4,51 @@ import "./LeftSidebar.css";
 
 const LeftSidebar = () => {
   const [menubar, setMenu] = useState();
-//   function left_menu_Open() {
-    
-//     setMenu(true);
-//   }
+  //   function left_menu_Open() {
 
-//   function left_menu_close() {
-//     setMenu(false);
-//   }
+  //     setMenu(true);
+  //   }
+
+  //   function left_menu_close() {
+  //     setMenu(false);
+  //   }
   return (
-    <div className="left-sidebar-div">
-      <div className="menu" onClick={()=>setMenu(!menubar)}>
-        menu
+    <>
+      <div className="menu">
+        <div onClick={() => setMenu(!menubar)}>menu</div>
       </div>
-      <div className="close" >
-        X
+      <div className="k">
+        <div
+          className={menubar ? "left-sidebar-div mobile " : "left-sidebar-div "}
+        >
+          {/* <ul className={menubar ? "leftsidebar-contents mobile" : "mobile"}> */}
+
+          <ul className="leftsidebar-contents ">
+            <li>
+              <span class="material-symbols-outlined">home</span>
+              <Link> Home</Link>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">grid_view</span>
+              <Link>Exams</Link>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">layers</span>
+              <Link>Subscriptions</Link>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">forum</span>
+              <Link>Ask Doubts</Link>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">description</span>
+              <Link>Sample Paper</Link>
+            </li>
+          </ul>
+          {/* //   )} */}
+        </div>
       </div>
-      {/* {menubar && ( */}
-        <ul className={menubar?"leftsidebar-contents mobile" :"close"}>
-          <li>
-            <span class="material-symbols-outlined">home</span>
-            <Link> Home</Link>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">grid_view</span>
-            <Link>Exams</Link>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">layers</span>
-            <Link>Subscriptions</Link>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">forum</span>
-            <Link>Ask Doubts</Link>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">description</span>
-            <Link>Sample Paper</Link>
-          </li>
-        </ul>
-    {/* //   )} */}
-    </div>
+    </>
   );
 };
 

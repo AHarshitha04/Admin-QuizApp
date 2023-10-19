@@ -232,7 +232,7 @@ const StartExam = () => {
       <div className="ls-bar-exam-page">
 
         {/****************** LeftSidebar Component render *******************/}
-        <div className="left-sidebar-div">
+        <div >
           <LeftSidebar />
         </div>
 

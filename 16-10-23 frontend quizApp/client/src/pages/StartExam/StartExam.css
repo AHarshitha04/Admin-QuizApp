@@ -160,7 +160,7 @@
 }
 
 .left-sidebar-div { 
-    height: 900px;
+    /* height: 900px; */
     background-color: rgb(253, 254, 255);
 }
 
@@ -299,4 +299,22 @@
     padding: 10px;
     gap: 5px;
     /* color: white; */
+}
+
+
+
+
+@media  (max-width:830px) {
+   .header-links {
+        gap: 3rem;    }
+    .header-links a{
+        font-size: 0.9rem;
+    }   
+  
+}
+@media  (max-width:800px) {
+    .ls-bar-exam-page {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
