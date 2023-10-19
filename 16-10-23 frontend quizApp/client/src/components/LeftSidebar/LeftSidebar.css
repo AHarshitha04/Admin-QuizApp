@@ -28,21 +28,29 @@
 
 .menu {
     display: none;
+    position: absolute;
+    top: 9%;
+    left: 0%;
+    z-index: 10000;
+    color: #000000;
+    transition: 0.5s all;
 }
 
 .mobile {
     display: none;
     position: fixed;
     background: #000;
-    padding: 1rem;
-    transition: 5s ease-in-out;
-    height: 70vh;
-    top: 0%;   
+    padding: 5rem 3rem;
+    transition: 0.5s ease-in-out;
+    height: 80vh;
+    top: 10%;
+    left: -5%;
     border-radius: 20px;
+    background-color: #000;
     z-index: 10;
 
-
 }
+
 
 
 @media (max-width:1180px) {
@@ -61,26 +69,78 @@
 }
 
 @media (max-width:800px) {
-    .menu{
-        display: block;
+    .menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        width: 50px;
+        height: 50px;
+        padding: 0.5rem;
+        /* border-radius: 50%; */
     }
-    
-    .left-sidebar-div {
+
+    .ls-bar-exam-page {
+        grid-template-columns: 1fr;
+    }
+
+    .menu ul {
         display: none;
         background: none;
     }
-   
-    .leftsidebar-contents{
+
+    .leftsidebar-contents {
         gap: 5rem;
-        padding: 5rem  0;
-        align-items: center;
-        background: #00000025;
+        width: 100%;
+        align-items: flex-start;
+        background: #000000cb;
+        height: 100%;
+        border-radius: 18px;
+
     }
 
-       
-    .mobile{
-        display: block;
-        width:300px;
-        background-color: #000;
+    .left-sidebar-div {
+        display: none;
+
     }
+
+    .leftsidebar-contents li a {
+        color: #fff;
+
+        font-size: 1.2rem;
+
+    }
+
+    .leftsidebar-contents li span {
+        font-size: 1.9rem;
+        text-align: left;
+    }
+
+    .leftsidebar-contents li {
+        color: #fff;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+
+
+
+    .mobile {
+        display: block;
+        width: 300px;
+        animation: mobile linear 0.5s alternate;
+
+    }
+}
+
+@keyframes mobile {
+    0% {
+        transform: translatey(-100%);
+    }
+
+    100% {
+        transform: translatey(0%);
+        background: #000;
+    }
+
 }

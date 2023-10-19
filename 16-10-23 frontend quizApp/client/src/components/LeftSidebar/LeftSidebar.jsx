@@ -15,11 +15,13 @@ const LeftSidebar = () => {
   return (
     <>
       <div className="menu">
-        <div onClick={() => setMenu(!menubar)}>menu</div>
+        <div onClick={() => setMenu(!menubar)}>  <span class="material-symbols-outlined">
+menu
+</span></div>
       </div>
       <div className="k">
         <div
-          className={menubar ? "left-sidebar-div mobile " : "left-sidebar-div "}
+          className={menubar ? " mobile left-sidebar-div  " : "left-sidebar-div "}
         >
           {/* <ul className={menubar ? "leftsidebar-contents mobile" : "mobile"}> */}
 
