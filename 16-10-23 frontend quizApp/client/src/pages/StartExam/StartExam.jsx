@@ -4,9 +4,11 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import "./StartExam.css";
 import logo from '../../images/logo.jpg'
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom"; //NavLink
+import 'react-phone-number-input/style.css'
 import PhoneInput from "react-phone-number-input";
 // import LoginSignUpBox from '../../components/Login&SignUp/Login&SignUpBox';
+
 
 const StartExam = () => {
   const myComponentStyle1 = {
@@ -16,18 +18,31 @@ const StartExam = () => {
     // color: 'white'
   };
 
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert1, setShowAlert1] = useState(false);
+  const [showAlert2, setShowAlert2] = useState(false);
 
-  const openAlert = () => {
-    setShowAlert(true);
+  const openAlert1 = () => {
+    setShowAlert1(true);
   };
-  const closeAlert = () => {
-    setShowAlert(false);
+
+  const closeAlert1 = () => {
+    setShowAlert1(false);
+  };
+
+  const openAlert2 = () => {
+    setShowAlert2(true);
+  };
+
+  const closeAlert2 = () => {
+    setShowAlert2(false);
   };
 
   const countries = [
     { id: "1", name: "INDIA" },
     { id: "2", name: "USA" },
+    { id: "3", name: "GERMANY" },
+    { id: "4", name: "KOREA" },
+    { id: "5", name: "AFRICA" },
   ];
 
   const states = [
@@ -46,6 +61,7 @@ const StartExam = () => {
     { id: "4", stateId: "2", name: "kalka Ji" },
     { id: "5", stateId: "3", name: "Hyderabad" },
     { id: "6", stateId: "3", name: "Gachibowli" },
+
     { id: "1", stateId: "5", name: "Houston" },
     { id: "2", stateId: "5", name: "Austin" },
     { id: "3", stateId: "6", name: "Los Angeles" },
@@ -74,49 +90,102 @@ const StartExam = () => {
 
   const [value, setValue] = useState();
 
+  var User = null;
+
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+
   return (
     <div className="main_conatiner">
+
+      {/*******************starting code NAVBAR CONTENT ****************/}
       <div>
-        {/* <Navbar /> */}
         <div className='navbar-div'>
-      <img src={logo} alt="logo" width='250px' />
+          <img src={logo} alt="logo" width='250px' />
 
-      <div className='auth-btn'>
-        <div><button onClick={openAlert}>LOGIN</button></div>
-        <div><button>SIGNUP</button></div>
-      </div>
-      {/* <div>
-        {showAlert && (
-          <div id='divContent'>
-            <LoginSignUpBox/>
-            <div>
-              <div className='login_close_container'><h4>LOGIN</h4><p><span id='close-icon' class="material-symbols-outlined" onClick={closeAlertForLogin1}>
-                close
-              </span></p></div>
-              <form action="" id='form'>
-                <p>
-                  <h5>Mobile Number or Email :</h5>
-                  <input type="text" placeholder="Enter your Mobile Number or Email" />
-                </p>
-                <p>
-                  <h5>Password :</h5>
-                  <input type="text" placeholder="Enter your Password" />
-                </p>
-                <p><Link>Forgot Password?</Link></p>
-              </form>
-              <div>
-                <button>Submit</button>
-                <button>Don't Have Account? SIGNUP</button>
-              </div>
+          <div className='auth-btn'>
+            <div className="Login_logOUT">
+              {!User ? (
+                <div >
+                  <div><button onClick={openAlert1}>LOGIN</button>
+                    <button onClick={openAlert2}>SIGNUP</button></div>
+
+
+                </div>
+              ) : (
+                <>
+                  <button onClick={() => setIsOpen1(!isOpen1)}>{User}</button>
+                  {isOpen1 && (
+                    <div>
+                      <div>
+                        <p>Profile</p>
+                        <p>Log Out</p>
+                      </div>
+                    </div>
+
+                  )}
+                  <div>
+                    <button onClick={() => setIsOpen2(!isOpen2)}>Courses</button>
+                    {isOpen2 && (
+                      <div>
+                        <p>IIT</p>
+                        <p>JEE</p>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
-
+            {/* <div>
+              {
+                User = null ?<div><button onClick={openAlert1}>LOGIN</button> 
+                  <button onClick={openAlert2}>SIGNUP</button></div>: 
+                <>
+                  <button onClick={() => setIsOpen1(!isOpen1)}>{User}</button>
+                  {isOpen1 && (
+                    <div>
+                      <p>Profile</p>
+                      <p>Log Out</p>
+                    </div>
+                  )}
+                  <div>
+                      <button onClick={() => setIsOpen2(!isOpen2)}>Courses</button>
+                      {isOpen2 && (
+                        <div>
+                          <p>Profile</p>
+                          <p>Log Out</p>
+                        </div>
+                      )}
+                  </div>
+                </>
+              }
+            </div> */}
+            {/* <div><button onClick={openAlert1}>LOGIN</button></div> */}
+            {/* <div><button onClick={openAlert2}>SIGNUP</button></div> */}
+            {/* {
+              dropDown && (
+                <div>
+                  <button onClick={() => setIsOpen(!isOpen)}>Toggle Dropdown</button>
+                  {isOpen && (
+                    <div>
+                      <p>Profile</p>
+                      <p>Log Out</p>
+                    </div>
+                  )}
+                </div>
+              )
+            } */}
           </div>
-        )}
-      </div> */}
-    </div>
+        </div>
 
       </div>
-      {showAlert && (
+      {/*******************end code NAVBAR CONTENT ****************/}
+
+
+
+      {/********************* Show alert 1 start code ****************/}
+
+      {showAlert1 && (
         <div id="divContent1">
           {/* <LoginSignUpBox/> */}
           <div>
@@ -126,7 +195,7 @@ const StartExam = () => {
                 <span
                   id="close-icon"
                   class="material-symbols-outlined"
-                  onClick={closeAlert}
+                  onClick={closeAlert1}
                 >
                   close
                 </span>
@@ -150,188 +219,232 @@ const StartExam = () => {
             </form>
             <div>
               <button>Submit</button>
-              <button>Don't Have Account? SIGNUP</button>
+              <button onClick={openAlert2}>Don't Have Account? SIGNUP</button>
             </div>
           </div>
         </div>
       )}
-      {/* <div id='divContent2'>
-                
-                <div>
-                    <div className='login_close_container'><h4>SIGNUP</h4><p><span id='close-icon' class="material-symbols-outlined" onClick={closeAlert}>
-                        close
-                    </span></p></div>
-                    <form action="" id='form'>
-                        <p>
-                            <h5>Name :</h5>
-                            <input type="text" placeholder="Enter your Name" />
-                        </p>
-                        <p>
-                            <h5>Email Address :</h5>
-                            <input type="text" placeholder="Enter your Email Address" />
-                        </p>
-                        <p>
-                            <PhoneInput
-                                placeholder="Enter phone number"
-                                value={value}
-                                onChange={setValue} />
-                        </p>
-                        <p><select id="ddlCountry" className='form-control select-class' onChange={(e) => handleCountry(e.target.value)}>
-                            <option value="0">Select Country</option>
-                            {
-                                country &&
-                                    country !== undefined ?
-                                    country.map((ctr, index) => {
-                                        return (
-                                            <option key={index} value={ctr.id}>{ctr.name}</option>
-                                        )
-                                    })
-                                    : "No Country"
 
-                            }
-                        </select>
-                        </p>
-                        <br></br>
-                        <p><select id="ddlStates" className='form-control select-class' onChange={(e) => handleState(e.target.value)}>
-                            <option value="0">Select State</option>
-                            {
-                                state &&
-                                    state !== undefined ?
-                                    state.map((ctr, index) => {
-                                        return (
-                                            <option key={index} value={ctr.id}>{ctr.name}</option>
-                                        )
-                                    })
-                                    : "No State"
+      {/********************* Show alert 1 end code ****************/}
 
-                            }
-                        </select>
-                        </p>
-                        <br></br>
-                        <p><select id="ddlCity" className='form-control select-class'>
-                            <option value="0">Select City</option>
-                            {
-                                city &&
-                                    city !== undefined ?
-                                    city.map((ctr, index) => {
-                                        return (
-                                            <option key={index} value={ctr.id}>{ctr.name}</option>
-                                        )
-                                    })
-                                    : "No City"
 
-                            }
-                        </select>
-                        </p>
-                       
-                       
-                    </form>
-                    <div>
-                        <button>Submit</button>
-                        <button>Login</button>
-                    </div>
-                </div>
 
-            </div> */}
+      {/********************* Show alert 2 start code ****************/}
+      {showAlert2 && (
+        <div id='divContent2'>
 
-      <div className="ls-bar-exam-page">
-        <div className="left-sidebar-div">
-          <LeftSidebar />
-        </div>
-        <div className="exam-middle-div">
           <div>
-            <h3 className="exam-heading">JEE MAIN Full Test</h3>
-          </div>
-          <div className="home-main-page">
-            {/* <h2>JEE MAIN Full Test</h2> */}
+            <div className='login_close_container'><h4>SIGNUP</h4><p><span id='close-icon' class="material-symbols-outlined" onClick={closeAlert2}>
+              close
+            </span></p></div>
+            {/****************** form start code *******************/}
+            <form action="" id='form'>
+              <p>
+                <h5>Name :</h5>
+                <input type="text" placeholder="Enter your Name" />
+              </p>
+              <p>
+                <h5>Email Address :</h5>
+                <input type="text" placeholder="Enter your Email Address" />
+              </p>
+              <p>
+                <PhoneInput
+                  placeholder="Enter phone number"
+                  value={value}
+                  onChange={setValue} />
+              </p>
+              <p>
+                <h5>Password :</h5>
+                <input type="password" placeholder="Enter your password" />
+              </p>
+              <p><select id="ddlCountry" className='form-control select-class' onChange={(e) => handleCountry(e.target.value)}>
+                <option value="0">Select Country</option>
+                {
+                  country &&
+                    country !== undefined ?
+                    country.map((ctr, index) => {
+                      return (
+                        <option key={index} value={ctr.id}>{ctr.name}</option>
+                      )
+                    })
+                    : "No Country"
+
+                }
+              </select>
+              </p>
+              <br></br>
+              <p><select id="ddlStates" className='form-control select-class' onChange={(e) => handleState(e.target.value)}>
+                <option value="0">Select State</option>
+                {
+                  state &&
+                    state !== undefined ?
+                    state.map((ctr, index) => {
+                      return (
+                        <option key={index} value={ctr.id}>{ctr.name}</option>
+                      )
+                    })
+                    : "No State"
+
+                }
+              </select>
+              </p>
+              <br></br>
+              <p><select id="ddlCity" className='form-control select-class'>
+                <option value="0">Select City</option>
+                {
+                  city &&
+                    city !== undefined ?
+                    city.map((ctr, index) => {
+                      return (
+                        <option key={index} value={ctr.id}>{ctr.name}</option>
+                      )
+                    })
+                    : "No City"
+
+                }
+              </select>
+              </p>
+            </form>
+            {/****************** form end code *******************/}
+
             <div>
+              <button>Submit</button>
+              <button>Login</button>
+            </div>
+          </div>
+
+        </div>
+      )}
+      {/********************* Show alert 2 end code ****************/}
+      
+
+        <div className="ls-bar-exam-page">
+
+          {/****************** LeftSidebar Component render *******************/}
+          <div>
+            <LeftSidebar />
+          </div>
+
+          {/********************starting code Exam page Header  *****************/}
+          <div className="exam-middle-div">
+            <div>
+              <h3 className="exam-heading">JEE MAIN Full Test</h3>
+            </div>
+            <div className="home-main-page">
+              {/* <h2>JEE MAIN Full Test</h2> */}
               <div>
-                <div className="header-div1">
-                  <p className="div-heading">Online Test for JEE Main</p>
-                </div>
-                <div className="header-div2">
-                  <div className="header-links">
-                    <NavLink activeclassname="active" className="content-link">
-                      Full Test
-                    </NavLink>
-                    <NavLink activeclassname="active" className="content-link">
-                      Subject Test
-                    </NavLink>
-                    <NavLink activeclassname="active" className="content-link">
-                      Chapter Test
-                    </NavLink>
-                    <NavLink activeclassname="active" className="content-link">
-                      Previous Years{" "}
-                    </NavLink>
+                <div>
+                  <div className="header-div1">
+                    <p className="div-heading">Online Test for JEE Main</p>
+                  </div>
+                  <div className="header-div2">
+                    <div className="header-links">
+                      <NavLink activeclassname="active" className="content-link">
+                        Full Test
+                      </NavLink>
+                      <NavLink activeclassname="active" className="content-link">
+                        Subject Test
+                      </NavLink>
+                      <NavLink activeclassname="active" className="content-link">
+                        Chapter Test
+                      </NavLink>
+                      <NavLink activeclassname="active" className="content-link">
+                        Previous Years{" "}
+                      </NavLink>
+                    </div>
                   </div>
                 </div>
               </div>
-              {/* <HomeHeader /> */}
-            </div>
-            <div className="test-card">
-              <div className="test-card-header">
-                <div className="test-contents1">
-                  <h3 className="jee-test-1">JEE MAIN 2024 TEST-1</h3>
-                  <span
-                    style={myComponentStyle2}
-                    class="material-symbols-outlined"
-                  >
-                    lock_open
-                  </span>
-                </div>
-                <p className="testCard-second-header">
-                  Available Till: 31 May,2024
-                </p>
-                <p className="free-title">FREE</p>
-              </div>
-              <div>
-                <div className="test-contents2">
-                  <span
-                    style={myComponentStyle1}
-                    class="material-symbols-outlined"
-                  >
-                    help
-                  </span>
-                  <p>90 Questions</p>
-                </div>
+              {/********************end code Exam page Header  *****************/}
 
-                <div className="test-contents2">
-                  <span
-                    style={myComponentStyle1}
-                    class="material-symbols-outlined"
-                  >
-                    schedule
-                  </span>
-                  <p>180 Minutes</p>
-                </div>
 
-                <div className="test-contents2">
-                  <span
-                    style={myComponentStyle1}
-                    class="material-symbols-outlined"
-                  >
-                    trending_up
-                  </span>
-                  <p>300 Marks</p>
-                </div>
 
-                {/* <div className='test-btn'><button onClick={startCountdown} className='play-btn'><span class="material-symbols-outlined">
+              {/********************starting testcard code  *****************/}
+              <div className="test-card">
+                <div className="test-card-header">
+                  <div className="test-contents1">
+                    <h3 className="jee-test-1">JEE MAIN 2024 TEST-1</h3>
+                    <span
+                      style={myComponentStyle2}
+                      class="material-symbols-outlined"
+                    >
+                      lock_open
+                    </span>
+                  </div>
+                  <p className="testCard-second-header">
+                    Available Till: 31 May,2024
+                  </p>
+                  <p className="free-title">FREE</p>
+                </div>
+                <div>
+                  <div className="test-contents2">
+                    <span
+                      style={myComponentStyle1}
+                      class="material-symbols-outlined"
+                    >
+                      help
+                    </span>
+                    <p>90 Questions</p>
+                  </div>
+
+                  <div className="test-contents2">
+                    <span
+                      style={myComponentStyle1}
+                      class="material-symbols-outlined"
+                    >
+                      schedule
+                    </span>
+                    <p>180 Minutes</p>
+                  </div>
+
+                  <div className="test-contents2">
+                    <span
+                      style={myComponentStyle1}
+                      class="material-symbols-outlined"
+                    >
+                      trending_up
+                    </span>
+                    <p>300 Marks</p>
+
+                  </div>
+
+                  {/* <div className='test-btn'><button onClick={startCountdown} className='play-btn'><span class="material-symbols-outlined">
                         chevron_right
                     </span>Start Test</button></div> */}
-                <div className="test-btn">
-                  <button className="play-btn" onClick={openAlert}>
-                    <span class="material-symbols-outlined">chevron_right</span>
-                    Start Test
-                  </button>
+                  <div className="test-btn">
+                    <button className="play-btn" onClick={openAlert1}>
+                      <span class="material-symbols-outlined">chevron_right</span>
+                      Start Test
+                    </button>
 
-                  {/* element={<Instructions />} */}
+                    {/* element={<Instructions />} */}
+                  </div>
                 </div>
               </div>
+
+              {/********************end testcard code  *****************/}
+
             </div>
+
           </div>
+
         </div>
-      </div>
+      
+
+{/*       
+      {
+        afterlogin_dashboard &&
+        <div className="dashboard" id="dashboard">
+
+        </div>
+      } */}
+
+
+
+
     </div>
+
+
   );
 };
 
